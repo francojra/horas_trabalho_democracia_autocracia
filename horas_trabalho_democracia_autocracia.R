@@ -80,14 +80,26 @@ ggplot(hor_trab2, aes(x = Year, y = horas,
                       group = Entity, color = Entity)) +
   geom_point(shape = 15, size = 2.5) +
   geom_line(size = 1.2) +
-  scale_fill_manual(values = c( "#88CCEE", "#CC6677",
-                                "#DDCC77", "#117733")) +
+  scale_color_manual(values = c( "#88CCEE", "#CC6677",
+                                "#DDCC77", "#117733"),
+                    labels = c("China", "Alemanha", "Japão",
+                               "Estados Unidos")) +
   labs(x = "Tempo (anos)", y = "Tempo médio anual\n de trabalho (horas)",
        color = "Países") +
   theme_ipsum(axis_text_size = 14, axis_title_size = 16) +
   theme(axis.text = element_text(colour = "black"))
 
-
+ggplot(hor_trab3, aes(x = Year, y = horas, 
+                      group = Entity, color = Entity)) +
+  geom_line(size = 2) +
+  scale_color_manual(values = c('#1B9E77', '#999999','#E69F00'),
+                     labels = c("Brazil", "China", "Estados Unidos")) +
+  labs(x = "Tempo (anos)", y = "Tempo médio anual\n de trabalho (horas)",
+       color = "Países") +
+  theme_light() +
+  theme(axis.title = element_text(size = 18),
+        axis.text = element_text(color = "black", size = 15),
+        legend.text = element_text(size = 12))
 
 
 

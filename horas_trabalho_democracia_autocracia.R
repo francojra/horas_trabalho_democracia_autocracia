@@ -19,3 +19,17 @@
 ### Aqui nós apresentamos dados sobre horas de trabalho. Nós exploramos como isso ocorre
 ### nos países e ao longo do tempo, e como essas diferenças importam na vida das pessoas.
 
+### Os dados consideram apenas a média de horas dos trabalhadores em tempo integral e que 
+### não participam de atividades da agricultura.
+
+# Carregar pacotes -------------------------------------------------------------------------------------------------------------------------
+
+library(tidyverse)
+library(cols4all)
+library(hrbrthemes)
+library(ggthemes)
+
+# Carregar dados ---------------------------------------------------------------------------------------------------------------------------
+
+
+

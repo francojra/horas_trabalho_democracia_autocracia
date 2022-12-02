@@ -32,5 +32,44 @@ library(ggthemes)
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
 hor_trab <- read.csv("annual-working-hours-per-worker.csv")
-View(hor_trab)
+view(hor_trab)
 names(hor_trab)
+
+# Manipular dados --------------------------------------------------------------------------------------------------------------------------
+
+hor_trab <- hor_trab %>%
+  select(-Code) %>%
+  rename(horas = Average.annual.working.hours.per.worker) %>%
+  view()
+
+hor_trab1 <- hor_trab %>%
+  filter(Entity %in% c("United States", "Germany", "Japan",
+                       "China")) %>%
+  group_by(Entity) %>%
+  summarise(media = mean(horas), sd = sd(horas),
+            n = n(), se = sd/sqrt(n)) %>%
+  view()
+
+hor_trab2 <- hor_trab %>%
+  filter(Entity %in% c("United States", "Germany", "Japan",
+                       "China")) %>%
+  view()
+
+hor_trab3 <- hor_trab %>%
+  filter(Entity %in% c("United States", "Brazil", "China")) %>%
+  view()
+
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
+c4a("safe", 4)
+
+ggplot(hor_trab1, aes(x = fct_reorder(Entity, media), y = media, fill = Entity)) +
+  geom_col(width = 0.9) +
+  geom_errorbar(aes(ymin = media - se, ymax = media + se),
+                width = 0.2, size = 0.8) +
+  scale_fill_manual(values = c( "#88CCEE", "#CC6677",
+                                "#DDCC77", "#117733")) +
+  scale_y_continuous(expand = expansion(mult = c(0,0))) +
+  labs(x = "Países", y = "Tempo médio anual\n de trabalho (horas)") +
+  theme_ipsum(axis_text_size = 14, axis_title_size = 16) +
+  theme(legend.position = "none", axis.text = element_text(colour = "black"))

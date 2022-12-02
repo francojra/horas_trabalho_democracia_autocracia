@@ -70,6 +70,7 @@ ggplot(hor_trab1, aes(x = fct_reorder(Entity, media), y = media, fill = Entity))
   scale_fill_manual(values = c( "#88CCEE", "#CC6677",
                                 "#DDCC77", "#117733")) +
   scale_y_continuous(expand = expansion(mult = c(0,0))) +
+  scale_x_discrete(labels = c("Alemanha", "Estados Unidos", "Japão", "China")) +
   labs(x = "Países", y = "Tempo médio anual\n de trabalho (horas)") +
   theme_ipsum(axis_text_size = 14, axis_title_size = 16) +
   theme(legend.position = "none", axis.text = element_text(colour = "black"))

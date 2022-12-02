@@ -31,5 +31,6 @@ library(ggthemes)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
-
-
+hor_trab <- read.csv("annual-working-hours-per-worker.csv")
+View(hor_trab)
+names(hor_trab)

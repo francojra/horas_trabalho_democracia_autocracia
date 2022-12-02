@@ -40,6 +40,7 @@ names(hor_trab)
 hor_trab <- hor_trab %>%
   select(-Code) %>%
   rename(horas = Average.annual.working.hours.per.worker) %>%
+  filter(between(Year, 1970, 2017)) %>%
   view()
 
 hor_trab1 <- hor_trab %>%
@@ -74,3 +75,17 @@ ggplot(hor_trab1, aes(x = fct_reorder(Entity, media), y = media, fill = Entity))
   labs(x = "Países", y = "Tempo médio anual\n de trabalho (horas)") +
   theme_ipsum(axis_text_size = 14, axis_title_size = 16) +
   theme(legend.position = "none", axis.text = element_text(colour = "black"))
+
+ggplot(hor_trab2, aes(x = Year, y = horas, 
+                      group = Entity, color = Entity)) +
+  geom_point() +
+  geom_line() +
+  labs(x = "Tempo (anos)", y = "Tempo médio anual\n de trabalho (horas)",
+       color = "Países") +
+    theme_ipsum(axis_text_size = 14, axis_title_size = 16) +
+  theme(legend.position = "none", axis.text = element_text(colour = "black"))
+
+
+
+
+
